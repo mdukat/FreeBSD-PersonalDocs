@@ -31,6 +31,7 @@ Table of contents:
 ```
 alias ls='ls --color'
 alias free='vmstat'
+alias lsblk='geom disk list'
 ```
 
 ## 4) Check battery status (no information in handbook)
