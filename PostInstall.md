@@ -8,6 +8,7 @@ Table of contents:
  - 6) Change shell to bash, but still use `.shrc` configuration
  - 7) Quick `.profile` rebuild (Change editor, remove fortune)
  - 8) Allow users to mount CDROM/USB
+   - 8.1) Fix `operator` group permissions
 
 ## 1) Set terminal resolution
  - [Vesa kldload fix](https://forums.freebsd.org/threads/trouble-with-changing-console-resolution.57689/)
@@ -83,3 +84,20 @@ alias lsblk='geom disk list'
      - Mount CD9660 CDROM: `mount_cd9660 /dev/cd0 ~/mountpoint`
    - Unmount: `umount ~/mountpoint`
    
+## 8.1) Fix `operator` group permissions
+[Katron blog entry](https://katron.org/blog/2018/06/freebsd-devfs-rules/)
+ - As root:
+   - Open `/etc/devfs.rules` with your editor
+   - Add these lines:
+   ```
+   [localrules=10]
+   add path 'da*' mode 0660 group operator
+   ```
+   - Open `/etc/rc.conf` with your editor
+   - Add this line:
+   ```
+   devfs_system_ruleset="localrules"
+   ```
+   - Restart devfs: `/etc/rc.d/devfs restart`
+   - Check if drive now has good permissions: `ls -al /dev/da*`
+   - Should be: `crwx-rw---- 1 root operator 0x6b Nov 2 17:42 /dev/da0s1`
