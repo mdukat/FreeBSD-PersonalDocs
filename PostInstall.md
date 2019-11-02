@@ -9,6 +9,7 @@ Table of contents:
  - 7) Quick `.profile` rebuild (Change editor, remove fortune)
  - 8) Allow users to mount CDROM/USB
    - 8.1) Fix `operator` group permissions
+ - 9) Load `ext2fs` kernel module on boot
 
 ## 1) Set terminal resolution
  - [Vesa kldload fix](https://forums.freebsd.org/threads/trouble-with-changing-console-resolution.57689/)
@@ -101,3 +102,11 @@ alias lsblk='geom disk list'
    - Restart devfs: `/etc/rc.d/devfs restart`
    - Check if drive now has good permissions: `ls -al /dev/da*`
    - Should be: `crwx-rw---- 1 root operator 0x6b Nov 2 17:42 /dev/da0s1`
+
+## 9) Load `ext2fs` kernel module on boot
+[/boot/loader.conf man page](https://www.freebsd.org/cgi/man.cgi?query=loader.conf&sektion=5&apropos=0&manpath=FreeBSD+12.0-RELEASE+and+Ports)
+ - As root:
+   - Open `/boot/loader.conf` with your editor
+   - Add line `ext2fs_load="YES"`
+   - Reboot
+   - Check with `kldstat`
