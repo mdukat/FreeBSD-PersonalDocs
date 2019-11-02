@@ -6,6 +6,7 @@ Table of contents:
  - 4) Check battery status (no information in handbook)
  - 5) Enable `su` access for user
  - 6) Change shell to bash, but still use `.shrc` configuration
+ - 7) Quick `.profile` rebuild (Change editor, remove fortune)
 
 ## 1) Set terminal resolution
  - [Vesa kldload fix](https://forums.freebsd.org/threads/trouble-with-changing-console-resolution.57689/)
@@ -50,3 +51,8 @@ alias free='vmstat'
    - `chsh -s /usr/local/bin/bash`
    - `mv ~/.shrc ~/.bash_profile`
    - relog
+
+## 7) Quick `.profile` rebuild
+ - Open `.profile` with favourite editor
+ - Change `EDITOR=vi` on line 18, to whatever you want (ex. `EDITOR=vim; export EDITOR`)
+ - Comment out last line (put `# ` before line)
