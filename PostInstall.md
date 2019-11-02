@@ -7,6 +7,7 @@ Table of contents:
  - 5) Enable `su` access for user
  - 6) Change shell to bash, but still use `.shrc` configuration
  - 7) Quick `.profile` rebuild (Change editor, remove fortune)
+ - 8) Allow users to mount CDROM/USB
 
 ## 1) Set terminal resolution
  - [Vesa kldload fix](https://forums.freebsd.org/threads/trouble-with-changing-console-resolution.57689/)
@@ -57,3 +58,28 @@ alias lsblk='geom disk list'
  - Open `.profile` with favourite editor
  - Change `EDITOR=vi` on line 18, to whatever you want (ex. `EDITOR=vim; export EDITOR`)
  - Comment out last line (put `# ` before line)
+
+## 8) Allow users to mount CDROM/USB
+[NixCraft link](https://www.cyberciti.biz/faq/freebsd-allow-ordinary-users-mount-cd-rom-dvds-usb-removabledevice/)
+ - As root:
+   - `echo "vfs.usermount=1" >> /etc/sysctl.conf`
+   - `sysctl vfs.usermount=1`
+   - For USB drives:
+   ```
+   echo "# USB Devices for Operator group" >> /etc/devfs.conf
+   echo "own   /dev/da0   root:operator" >> /etc/devfs.conf
+   echo "perm  /dev/da00  0666" >> /etc/devfs.conf
+   ```
+   - For CDROM:
+   ```
+   echo "# allow member of operator to mount cdrom" >> /etc/devfs.conf
+   echo "own	      /dev/cd0	   root:operator" >> /etc/devfs.conf
+   echo "perm      /dev/cd0	   0660" >> /etc/devfs.conf
+   ```
+   - Add user to group `operator`: `pw groupmod operator -m your_user`
+ - As user:
+   - Make directory for mounting: `mkdir ~/mountpoint`
+     - Mount FAT32 pendrive: `mount_msdosfs /dev/da0 ~/mountpoint`
+     - Mount CD9660 CDROM: `mount_cd9660 /dev/cd0 ~/mountpoint`
+   - Unmount: `umount ~/mountpoint`
+   
