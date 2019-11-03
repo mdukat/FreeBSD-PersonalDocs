@@ -17,3 +17,6 @@ My documents for adventures with FreeBSD
   - [Check present frequency](/CPUScaling.md#check-present-frequency)
   - [Change frequency using powerd](/CPUScaling.md#change-frequency-using-powerd)
   - [Change frequency on boot](/CPUScaling.md#change-frequency-on-boot)
+
+## Other links
+ - [FreeBSD command reference (PDF)](https://www.ws.afnog.org/afnog2006/e0/ha/freebsd/freebsdref1.pdf)
