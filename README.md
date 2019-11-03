@@ -20,3 +20,4 @@ My documents for adventures with FreeBSD
 
 ## Other links
  - [FreeBSD command reference (PDF)](https://www.ws.afnog.org/afnog2006/e0/ha/freebsd/freebsdref1.pdf)
+ - [FreeBSD Porter's Handbook](https://www.freebsd.org/doc/en_US.ISO8859-1/books/porters-handbook/)
