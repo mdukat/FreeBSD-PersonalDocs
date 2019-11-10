@@ -1,9 +1,11 @@
 # Quick look around on NetBSD
 
 ## Using pkg_add
+[Using pkgsrc](https://www.netbsd.org/docs/pkgsrc/using.html)
 ```
 PATH="/usr/pkg/sbin:$PATH"
-PKG_PATH="http://cdn.NetBSD.org/pub/pkgsrc/packages/OPSYS/ARCH/VERSIONS/All/"
+# PKG_PATH="http://cdn.NetBSD.org/pub/pkgsrc/packages/OPSYS/ARCH/VERSIONS/All/"
+PKG_PATH="http://cdn.NetBSD.org/pub/pkgsrc/packages/NetBSD/x86_64/8.1/All/"
 export PATH PKG_PATH
 
 pkg_add vim
