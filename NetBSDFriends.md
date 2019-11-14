@@ -27,3 +27,16 @@ route show
 ```
 find / -name gcc
 ```
+
+## Network
+### By hand
+```
+ifconfig re0 inet 192.168.0.100 netmask 255.255.255.0
+route add default 192.168.0.1
+```
+### Automatically
+```
+/etc/rc.conf:
+ifconfig_re0="inet 192.168.0.100 netmask 255.255.255.0"
+defaultroute=192.168.0.1
+```
