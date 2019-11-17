@@ -67,3 +67,9 @@ crontab -e
 pkg_add bash
 usermod -s /usr/pkg/bin/bash d3s
 ```
+
+## Delete package with dependencies
+`-R` option removes dependencies for package, unless other package uses those dependencies.
+```
+pkg_delete -R ffmpeg3
+```
