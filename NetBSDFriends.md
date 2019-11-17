@@ -40,3 +40,30 @@ route add default 192.168.0.1
 ifconfig_re0="inet 192.168.0.100 netmask 255.255.255.0"
 defaultroute=192.168.0.1
 ```
+
+## Quick and dirty ProFTPd
+
+> This method is dirty af, since it's working on examples, and not right rc.d file
+
+```bash
+pkg_add proftpd
+
+vim /usr/pkg/etc/proftpd.conf
+# Add DefaultAdress, remove anonymous login, modify DefaultRoot
+> DefaultAddress 192.168.0.100
+> DefaultRoot /hdd
+
+crontab -e
+# Add onestart on reboot, change /hdd permissions
+> @reboot /usr/pkg/share/examples/rc.d/proftpd onestart
+> @reboot chmod 777 /hdd
+
+# Reboot or enable proftpd by hand
+/usr/pkg/share/examples/rc.d/proftpd onestart
+```
+
+## Quick bash installation and setup
+```
+pkg_add bash
+usermod -s /usr/pkg/bin/bash d3s
+```
