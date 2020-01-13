@@ -28,6 +28,14 @@ route show
 find / -name gcc
 ```
 
+## pkgsrc Python3.7 "/usr/X11R6 not found" fix
+[Mailing list fix thread for Python2.7](http://mail-index.netbsd.org/pkgsrc-bugs/2017/10/24/msg062862.html)
+```
+make PKG_OPTIONS.python37='-x11' depends
+make
+make install
+```
+
 ## Network
 ### By hand
 ```
