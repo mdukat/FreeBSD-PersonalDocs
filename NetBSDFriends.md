@@ -81,3 +81,10 @@ usermod -s /usr/pkg/bin/bash d3s
 ```
 pkg_delete -R ffmpeg3
 ```
+
+## The thing with drive letters
+> The letters (a-e) are the partition names.  And partitions c and d are
+> special.  Partition d stands for your whole disk, and c stands for the
+> NetBSD slice.
+
+[Re: [Ext2 Mount] Newbie Question](https://mail-index.netbsd.org/netbsd-help/2001/04/21/0002.html)
